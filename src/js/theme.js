@@ -6,15 +6,6 @@ const Theme = {
     DARK: 'dark-theme',
   };
 
-
-if(localStorage.getItem('themeValue')){
-    onTheme.classList.add(localStorage.getItem('themeValue'))
-   
-} else {
-    onTheme.classList.add(Theme.LIGHT);
-}
-
-
 onSwitch.addEventListener('change', onSwitchChange);
 
 function onSwitchChange (){
@@ -26,4 +17,12 @@ function onSwitchChange (){
         onTheme.classList.remove(Theme.DARK);
     };
     localStorage.setItem('themeValue', onTheme.classList.value);
+};
+
+if(localStorage.getItem('themeValue')){
+    onTheme.classList.add(localStorage.getItem('themeValue'))
+   
+} else {
+    onTheme.classList.add(Theme.LIGHT);
 }
+
