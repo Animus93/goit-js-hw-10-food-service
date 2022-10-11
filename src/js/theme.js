@@ -7,10 +7,11 @@ const Theme = {
   };
 
 
-if(localStorage.getItem('themeValue') === ''){
-    onTheme.classList.add(Theme.LIGHT);
-} else {
+if(localStorage.getItem('themeValue')){
     onTheme.classList.add(localStorage.getItem('themeValue'))
+   
+} else {
+    onTheme.classList.add(Theme.LIGHT);
 }
 
 
@@ -26,4 +27,3 @@ function onSwitchChange (){
     };
     localStorage.setItem('themeValue', onTheme.classList.value);
 }
-console.log(localStorage.getItem('themeValue'))
