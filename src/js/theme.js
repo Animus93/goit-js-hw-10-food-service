@@ -6,23 +6,19 @@ const Theme = {
     DARK: 'dark-theme',
   };
 
-onSwitch.addEventListener('change', onSwitchChange);
 
-function onSwitchChange (){
-    if(onTheme.classList.contains(Theme.LIGHT)){
-    onTheme.classList.add(Theme.DARK);
-    onTheme.classList.remove(Theme.LIGHT);
-    } else if (onTheme.classList.contains(Theme.DARK)){
-        onTheme.classList.add(Theme.LIGHT);
-        onTheme.classList.remove(Theme.DARK);
-    };
-    localStorage.setItem('themeValue', onTheme.classList.value);
-};
+onSwitch.addEventListener('change', () => {
+    onSwitch.checked? toTheLightTheme(Theme.DARK): toTheLightTheme(Theme.LIGHT)
+});
 
-if(localStorage.getItem('themeValue')){
-    onTheme.classList.add(localStorage.getItem('themeValue'))
-   
-} else {
-    onTheme.classList.add(Theme.LIGHT);
+function toTheLightTheme(ThemeColor){
+    onTheme.classList.value = '';
+    onTheme.classList.add(ThemeColor);
+    localStorage.setItem('Theme', ThemeColor);
 }
 
+
+if(localStorage.getItem('Theme') && localStorage.getItem('Theme') === Theme.DARK){
+        toTheLightTheme(Theme.DARK);
+        onSwitch.checked = true;
+}
